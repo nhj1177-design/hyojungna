@@ -198,6 +198,14 @@
   /* ---------- Now / CTA ---------- */
   .band.now { padding: 76px 0 88px; }
   .band.now .wrap { text-align: center; }
+  .hyp-link {
+    display: inline-block; margin-top: 30px;
+    font-family: var(--serif); font-style: italic; font-size: 17px;
+    color: var(--accent); text-decoration: none;
+    border-bottom: 1px solid var(--accent-soft); padding-bottom: 2px;
+    transition: color .2s, border-color .2s;
+  }
+  .hyp-link:hover { color: var(--ink); border-color: var(--ink); }
   .now h2 { max-width: 620px; margin-left: auto; margin-right: auto; }
   .now .lede { margin: 0 auto 38px; }
   .contact-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
@@ -527,6 +535,7 @@
     <a class="btn btn-ghost" href="https://www.linkedin.com/in/hyojung-na" target="_blank" rel="noopener">LinkedIn ↗</a>
     <a class="btn btn-ghost" href="https://app.notion.com/p/Hyojung-Na-GTM-Business-Development-Case-Studies-33cbf530c4b180bc955ac977f2047818" target="_blank" rel="noopener">Portfolio ↗</a>
   </div>
+  <a class="hyp-link" href="hypotheses.html">The bets I'm making — and the ones I've let go →</a>
 </div>
 </section>
 
@@ -535,7 +544,6 @@
 <footer>
   <div class="wrap footer-inner">
     <span>Hyojung Na · Seoul, South Korea</span>
-    <span><a href="hypotheses.html">The bets I'm making — and the ones I've let go →</a></span>
     <span>Korean (Native) · English (Bilingual) · Chinese (Conversational)</span>
   </div>
 </footer>
