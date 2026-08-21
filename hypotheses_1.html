@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hypotheses — Hyojung Na</title>
+<meta name="description" content="The beliefs Hyojung Na started with, what time did to them, and the hypotheses she's positioning behind now — each with an expiry date.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FBF8F3;
+    --bg-soft: #F4EEE4;
+    --ink: #33302B;
+    --ink-soft: #6B655C;
+    --ink-faint: #9B948A;
+    --accent: #A8674B;
+    --accent-soft: #C4917A;
+    --accent-wash: #F1E4DC;
+    --sage: #7E8A70;
+    --line: #E5DED2;
+    --card: #FFFFFF;
+    --radius: 20px;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.7;
+    font-size: 16.5px;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--accent-wash); }
+
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- Nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(251,248,243,0.86);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 860px; margin: 0 auto; padding: 14px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-name { font-family: var(--serif); font-weight: 600; font-size: 17px; letter-spacing: 0.01em; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 26px; }
+  .nav-links a { color: var(--ink-soft); text-decoration: none; font-size: 13.5px; font-weight: 500; letter-spacing: 0.02em; transition: color .2s; }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ---------- Header ---------- */
+  header.wrap { padding-top: 72px; padding-bottom: 56px; }
+  .eyebrow {
+    font-size: 12.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 20px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(34px, 5.5vw, 50px);
+    line-height: 1.14;
+    letter-spacing: -0.01em;
+    margin-bottom: 22px;
+  }
+  h1 em { font-style: italic; color: var(--accent); }
+  .lede { font-size: 17.5px; color: var(--ink-soft); max-width: 640px; }
+
+  /* ---------- Section scaffolding ---------- */
+  .band { padding: 58px 0; }
+  .band.tint { background: #F5EFE5; }
+  .section-label {
+    font-size: 12.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 14px;
+  }
+  h2 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: clamp(25px, 4vw, 32px); line-height: 1.25;
+    margin-bottom: 18px; letter-spacing: -0.005em;
+  }
+
+  /* ---------- Bet rows ---------- */
+  .bets { margin-top: 40px; display: flex; flex-direction: column; }
+  .bet {
+    display: grid; grid-template-columns: 140px 1fr; gap: 28px;
+    padding: 30px 0; border-top: 1px solid var(--line);
+  }
+  .bet:first-child { border-top: none; padding-top: 0; }
+  @media (max-width: 560px) { .bet { grid-template-columns: 1fr; gap: 10px; } }
+
+  .verdict {
+    display: inline-flex; align-items: center; gap: 7px;
+    align-self: start; justify-self: start;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    border-radius: 999px; padding: 5px 13px; margin-top: 3px;
+    white-space: nowrap;
+  }
+  .verdict.right { color: var(--sage); background: #EEF0EA; }
+  .verdict.half  { color: #9A7B34; background: #F3EDDC; }
+  .verdict.wrong { color: var(--accent); background: var(--accent-wash); }
+  .verdict.closed { color: var(--ink-faint); background: var(--bg-soft); border: 1px solid var(--line); }
+  .verdict.open { color: var(--sage); background: transparent; border: 1px solid var(--sage); }
+
+  .verdict-stack {
+    display: flex; flex-direction: column; gap: 7px;
+    align-items: flex-start; align-self: start; margin-top: 3px;
+  }
+  @media (max-width: 560px) { .verdict-stack { flex-direction: row; flex-wrap: wrap; } }
+
+  .bet h3 { font-family: var(--serif); font-weight: 600; font-size: 19.5px; margin-bottom: 8px; }
+  .bet p { color: var(--ink-soft); font-size: 15.5px; max-width: 600px; }
+
+  /* ---------- Now cards ---------- */
+  .now-list { margin-top: 40px; display: flex; flex-direction: column; gap: 18px; }
+  .now-item {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 28px 30px;
+    transition: border-color .25s, box-shadow .25s;
+  }
+  .now-item:hover { border-color: var(--accent-soft); box-shadow: 0 10px 30px rgba(168,103,75,0.09); }
+  .now-item h3 { font-family: var(--serif); font-weight: 600; font-size: 19px; margin-bottom: 8px; }
+  .now-item p { color: var(--ink-soft); font-size: 15.5px; }
+  .doing {
+    display: inline-block; margin-top: 12px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--sage);
+  }
+  .doing + p { margin-top: 4px; font-size: 14.5px; }
+
+  /* ---------- Close / CTA ---------- */
+  .band.close { padding: 70px 0 84px; }
+  .band.close .wrap { text-align: center; }
+  .close h2 { max-width: 620px; margin-left: auto; margin-right: auto; }
+  .close .lede { margin: 0 auto 34px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 24px; border-radius: 999px;
+    font-size: 14.5px; font-weight: 500; text-decoration: none;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--ink); color: var(--bg); }
+  .btn-primary:hover { box-shadow: 0 8px 24px rgba(51,48,43,0.22); }
+  .btn-ghost { border: 1px solid var(--line); color: var(--ink); background: transparent; }
+  .btn-ghost:hover { border-color: var(--accent-soft); color: var(--accent); }
+  .contact-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 30px 0 44px;
+    font-size: 13.5px; color: var(--ink-faint);
+  }
+  .footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  footer a { color: var(--ink-soft); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+
+  /* ---------- Reveal animation ---------- */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-name" href="index.html">Hyojung Na</a>
+    <div class="nav-links">
+      <a href="index.html">← Home</a>
+      <a href="#then">Then</a>
+      <a href="#now">Now</a>
+      <a href="mailto:nhj1177@gmail.com">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="wrap">
+  <div class="eyebrow">The Bets</div>
+  <h1>Every belief has a shelf life.<br>The win is noticing <em>early</em>.</h1>
+  <p class="lede">
+    Every few years I write down what I think the world is about to do, then
+    position myself behind it. But the world keeps changing — so what seems
+    right now can turn old later, through no fault of the believing. The real
+    skill isn't being right; it's staying open, admitting when a belief has
+    aged, and letting it go — because the time you save is the leverage.
+    Here are the beliefs I started with, what time did to them, and the
+    ones I hold now.
+  </p>
+</header>
+
+<section id="then" class="band tint">
+  <div class="wrap reveal">
+  <div class="section-label">Then</div>
+  <h2>My earlier bets — and what time did to them</h2>
+
+  <div class="bets">
+    <div class="bet reveal">
+      <div class="verdict-stack">
+        <span class="verdict right">✓ Paid off</span>
+        <span class="verdict closed">Position closed</span>
+      </div>
+      <div>
+        <h3>Southeast Asia will rise.</h3>
+        <p>
+          I didn't just believe it — I moved my career into it: Tokotalk (acquired by
+          Shopee's parent SEA Ltd.), then the founding team at Plugo, on the ground
+          in Indonesia and Thailand. The bet paid — and then it grew old, as the
+          region's easy-growth chapter matured. I banked what it taught me and let
+          it go. A winning belief is still a belief with a shelf life.
+        </p>
+      </div>
+    </div>
+
+    <div class="bet reveal">
+      <div class="verdict-stack">
+        <span class="verdict right">✓ Paid off</span>
+        <span class="verdict closed">Position closed</span>
+      </div>
+      <div>
+        <h3>Software will prevail — especially the intermediary kind.</h3>
+        <p>
+          Six years in startups building exactly that: commerce infrastructure that
+          sits between sellers, platforms, and buyers. Right for its era — but the
+          center of gravity has moved on from software alone, toward what software
+          can't conjure: compute, energy, resources. So I closed this one too,
+          profitable as it was.
+        </p>
+      </div>
+    </div>
+
+    <div class="bet reveal">
+      <div class="verdict-stack">
+        <span class="verdict right">✓ Paid off</span>
+        <span class="verdict open">Still holding</span>
+      </div>
+      <div>
+        <h3>Chinese leverage will grow — so learn Chinese.</h3>
+        <p>
+          I learned it to conversational level, and the leverage is still
+          compounding — in building networks, in professional rooms where a shared
+          language changes what's possible, across cross-border work generally.
+          The one position on this page I'm still holding.
+        </p>
+      </div>
+    </div>
+
+    <div class="bet reveal">
+      <div class="verdict-stack">
+        <span class="verdict wrong">✗ Reversed</span>
+        <span class="verdict closed">Position closed</span>
+      </div>
+      <div>
+        <h3>Markets can wait — conservative and passive is enough.</h3>
+        <p>
+          Financial literacy wasn't a priority. I kept money simple — a few
+          holdings, nothing active — and in the environment I started out in,
+          that felt reasonable. Then the environment changed, and staying on the
+          sidelines began to carry its own risk. So I reversed the position: I now
+          trade actively with my own capital, where leverage and risk aren't
+          theory. Because to adjust to change, you first have to see it — and
+          money moves before the world does. Becoming financially literate with
+          my own capital on the line turned the markets into my widest window
+          on what's changing.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <p style="margin-top:34px; font-size:16px; color:var(--ink-soft); max-width:640px;">
+    The lesson of those years isn't the hit rate — notice that three of the four
+    positions above are closed, winners included. Beliefs age because the world
+    doesn't stop moving, and a paid-off bet held too long becomes a losing one.
+    The one I still hold stays open because it keeps earning its place, not out
+    of loyalty. Admitting a belief is old and releasing it is how you buy back
+    your time and attention. That's the biggest win, and the leverage.
+  </p>
+</div>
+</section>
+
+<section id="now" class="band">
+  <div class="wrap reveal">
+  <div class="section-label">Now</div>
+  <h2>What I think is already happening</h2>
+  <p class="lede">
+    Not predictions — observations. Some I'm already positioned behind; some
+    I'm still deciding what to do about, and I'd rather say so than pretend.
+    Each carries an expiry date I can't see yet; my job is to be the first
+    to notice it.
+  </p>
+
+  <div class="now-list">
+    <div class="now-item reveal">
+      <h3>People who can wield AI to build something of their own will compound.</h3>
+      <p>Everyone else competes on price. The dividing line isn't who knows about AI — it's who uses it to create.</p>
+      <span class="doing">What I'm doing</span>
+      <p>I work AI-first — this site, my research, and my materials are all built that way.</p>
+    </div>
+
+    <div class="now-item reveal">
+      <h3>The world will change faster than any playbook.</h3>
+      <p>What's right today can be old tomorrow. Adaptability isn't a soft skill anymore; it's the skill. The retired belief above is my proof that I practice what I preach.</p>
+      <span class="doing">What I'm doing</span>
+      <p>Re-reading my own hypotheses for expiry — in public — and rebuilding my toolkit every time the ground shifts.</p>
+    </div>
+
+    <div class="now-item reveal">
+      <h3>Individuals need their own traffic to survive — a necessity, not an option.</h3>
+      <p>Reach used to belong to institutions; now everyone is their own channel — or invisible. Waiting until you need an audience is how you end up without one.</p>
+      <span class="doing">What I'm doing</span>
+      <p>Building my own channels now — this site among them — instead of waiting until I need them.</p>
+    </div>
+
+    <div class="now-item reveal">
+      <h3>In a more efficient world, people will crave human connection.</h3>
+      <p>The more work AI does, the more the human relationship becomes the moat. That's a thesis about my profession: business development is the human-connection job.</p>
+      <span class="doing">What I'm doing</span>
+      <p>Much of my career has been spent in the rooms where trust is made — partnerships, field sales, communities — and I'm choosing my next chapter for the same reason.</p>
+    </div>
+
+    <div class="now-item reveal">
+      <h3>The world will become more isolated and polarized.</h3>
+      <p>There will always be geopolitical tensions. As the world fragments, mobility and flexibility will decrease — for resources, for capital, for human talent.</p>
+      <span class="doing">Still thinking</span>
+      <p>I haven't decided what to do about this one yet — naming it honestly comes first.</p>
+    </div>
+
+    <div class="now-item reveal">
+      <h3>Energy and resources will become more important.</h3>
+      <p>It was software, then hardware — and soon it will be energy and resources. Fiat money's value has always been declining; what's changing is that the world will acknowledge it more openly — and gold and resources will be valued more for it.</p>
+      <span class="doing">What I'm doing</span>
+      <p>Following it through the markets with my own capital — gold and commodities included.</p>
+    </div>
+
+    <div class="now-item reveal">
+      <h3>Blockchain and crypto will penetrate deeper into traditional finance.</h3>
+      <p>This one is no longer a prediction — it's already happening.</p>
+      <span class="doing">What I'm doing</span>
+      <p>Trading the assets and studying the rails, stablecoin infrastructure included.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="band tint close">
+  <div class="wrap reveal">
+  <div class="section-label">The Point</div>
+  <h2>I expect this page to age.<br>The plan is to notice <em>first</em>.</h2>
+  <p class="lede">
+    Holding beliefs lightly isn't the same as holding them weakly — I commit
+    hard, and I release fast. If any of these bets overlaps with the one your
+    team is making, I'd love to compare notes.
+  </p>
+  <div class="contact-row">
+    <a class="btn btn-primary" href="mailto:nhj1177@gmail.com">Get in touch</a>
+    <a class="btn btn-ghost" href="index.html">About me ↗</a>
+  </div>
+</div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>Hyojung Na · Seoul, South Korea</span>
+    <span><a href="index.html">hyojungna.com</a></span>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
